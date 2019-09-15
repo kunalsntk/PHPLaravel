@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Classes\gitClient;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $gitClientObj = new gitClient();
+        $data = $gitClientObj->execQuery();
+        // var_dump(json_decode($data));
         return view('home');
     }
 }
