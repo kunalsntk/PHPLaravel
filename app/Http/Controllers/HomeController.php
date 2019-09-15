@@ -28,6 +28,7 @@ class HomeController extends Controller
         $gitClientObj = new gitClient();
         $commits = $gitClientObj->execQuery();
         $commits = json_decode($commits,true);
+        $total_commits = count($commits);
 
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
  
@@ -38,7 +39,8 @@ class HomeController extends Controller
         $paginatedCommits->setPath($request->url());
 
         return view('home', [
-            'commits' => $paginatedCommits
+            'commits' => $paginatedCommits,
+            'total_commits' => $total_commits
         ]);
     }
 

@@ -34,7 +34,7 @@
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
-                    Total Commits: {{count($commits)}}
+                    Total Commits: {{$total_commits}}
                 </div>
             </div>
         </div>
