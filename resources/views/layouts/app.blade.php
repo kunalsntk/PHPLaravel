@@ -26,10 +26,38 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
     <script src="https://kit.fontawesome.com/f5201b0a29.js"></script>
+    <style>
+            body{
+                background-color:#4d4d4a;
+                color:white;
+            }
+            a{
+                color:#ef4c22;
+            }
+            button{
+                background-color: #ef4c22;
+                color:white;
+            }
+            .navbar{
+                background-color:black;
+                color:white;
+            }
+            .page-item.active .page-link{
+                color:#white;
+                background-color: #ef4c22;
+                border-color: #ef4c22;
+            }
+            .page-link{
+                color: #ef4c22;
+            }
+            .page-link:hover{
+                color: #ef4c22;
+            }
+    </style>
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-black shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Airspace Systems Challenge Task

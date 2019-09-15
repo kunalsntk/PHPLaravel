@@ -19,12 +19,28 @@
         margin-right: 10px;
         margin-top: 4px;
     }
+    .card-header{
+        background-color: #000000;
+        color: white;
+    }
+    .card-body{
+        background-color:#333333;
+    }
     .avatar{
         width: 50px;
         display: inline;
         border-radius: 50%;
         margin-right: 10px;
         margin-top: 10px;
+    }
+    .detail-btn{
+        background-color: #ef4c22;
+        color: white; 
+    }
+    .detail-btn:hover{
+        background-color: #c23b19;
+        color: white; 
+        text-decoration: none;
     }
 </style>
 <div class="container">
@@ -56,7 +72,7 @@
                         <div class="col-sm-2"><a href="{{HomeController::getInfo($commitArray, 'profile')}}" target="_blank">View Profile</a></div>
                         <div class="col-sm-2 col-md-3">{{HomeController::getInfo($commitArray, 'date')}}</div>
                         <div class="col-sm-1">
-                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{HomeController::getInfo($commitArray, 'node_id')}}" aria-expanded="true" aria-controls="collapse{{HomeController::getInfo($commitArray, 'node_id')}}">Details</button>
+                            <button class="btn btn-link detail-btn" data-toggle="collapse" data-target="#collapse{{HomeController::getInfo($commitArray, 'node_id')}}" aria-expanded="true" aria-controls="collapse{{HomeController::getInfo($commitArray, 'node_id')}}">Details</button>
                         </div>
                     </div>
                 </div>
