@@ -8,7 +8,16 @@
     }
     .commit-table{
         border-style: none;
-        border-color: transparent;;
+        border-color: transparent;
+        margin-bottom: 0px;
+    }
+    .commit-row{
+        padding:0px;
+    }
+    .commit-wrapper{
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 4px;
     }
     .avatar{
         width: 50px;
@@ -25,7 +34,7 @@
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
-                    Total Commits: 
+                    Total Commits: {{count($commits)}}
                 </div>
             </div>
         </div>
@@ -39,21 +48,17 @@
             @foreach($commits as $commitArray)
                 
               <div class="card">
-                <div class="card-header" id="headingOne">
-                    <table class="table commit-table">
-                            <tr>
-                                <td>{{HomeController::getInfo($commitArray, 'id')}}</td>
-                                <td>{{HomeController::getInfo($commitArray, 'name')}}</td>
-                                <td>{{HomeController::getInfo($commitArray, 'email')}}</td>
-                                <td><a href="{{HomeController::getInfo($commitArray, 'profile')}}">View Profile</a></td>
-                                <td>{{HomeController::getInfo($commitArray, 'date')}}</td>
-                                <td>
-                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{HomeController::getInfo($commitArray, 'node_id')}}" aria-expanded="true" aria-controls="collapse{{HomeController::getInfo($commitArray, 'node_id')}}">
-                                      Details
-                                    </button>
-                                </td>
-                            </tr>
-                    </table>
+                <div class="card-header commit-row" id="headingOne">
+                    <div class="row commit-wrapper">
+                        <div class="col-sm-2">{{HomeController::getInfo($commitArray, 'id')}}</div>
+                        <div class="col-sm-2">{{HomeController::getInfo($commitArray, 'name')}}</div>
+                        <div class="col-sm-2">{{HomeController::getInfo($commitArray, 'email')}}</div>
+                        <div class="col-sm-2"><a href="{{HomeController::getInfo($commitArray, 'profile')}}" target="_blank">View Profile</a></div>
+                        <div class="col-sm-2 col-md-3">{{HomeController::getInfo($commitArray, 'date')}}</div>
+                        <div class="col-sm-1">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{HomeController::getInfo($commitArray, 'node_id')}}" aria-expanded="true" aria-controls="collapse{{HomeController::getInfo($commitArray, 'node_id')}}">Details</button>
+                        </div>
+                    </div>
                 </div>
                 <div id="collapse{{HomeController::getInfo($commitArray, 'node_id')}}" class="collapse" aria-labelledby="heading{{HomeController::getInfo($commitArray, 'node_id')}}" data-parent="#accordion">
                   <div class="card-body">
@@ -74,7 +79,7 @@
                             <strong>Organisation:</strong> <a href="{{HomeController::getInfo($commitArray, 'org_url')}}">{{HomeController::getInfo($commitArray, 'org_url')}}</a>
                         </div>
                         <div>
-                            <img src="{{HomeController::getInfo($commitArray, 'avatar')}}" class="avatar"><p  style="display: inline">{{HomeController::getInfo($commitArray, 'name')}}</p>
+                            <a href="{{HomeController::getInfo($commitArray, 'profile')}}" target="_blank"><img src="{{HomeController::getInfo($commitArray, 'avatar')}}" class="avatar"><p  style="display: inline"><strong>{{HomeController::getInfo($commitArray, 'name')}}</strong></p></a>
                         </div>
                   </div>
                 </div>

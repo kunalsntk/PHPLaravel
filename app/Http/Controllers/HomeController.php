@@ -40,6 +40,9 @@ class HomeController extends Controller
                 break;
             case 'id': 
                 $result = $array['author']['id'];
+                if($result == ""){
+                    $result = "-";
+                }
                 break;
             case 'name': 
                 $result = $array['commit']['committer']['name'];
@@ -63,7 +66,7 @@ class HomeController extends Controller
                 $result = $array['committer']['avatar_url'];
                 break;
             case 'profile':
-                $result = $array['committer']['url'];
+                $result = $array['committer']['html_url'];
                 break;
         }
         return $result;    
