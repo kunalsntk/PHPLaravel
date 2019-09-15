@@ -37,27 +37,31 @@
         <div class="col-md-12">
             <div id="accordion">
             @foreach($commits as $commitArray)
+                
               <div class="card">
                 <div class="card-header" id="headingOne">
                     <table class="table commit-table">
                             <tr>
-                                <td>id</td>
+                                <td>{{HomeController::getInfo($commitArray, 'id')}}</td>
                                 <td>{{HomeController::getInfo($commitArray, 'name')}}</td>
                                 <td>{{HomeController::getInfo($commitArray, 'email')}}</td>
                                 <td><a href="{{HomeController::getInfo($commitArray, 'profile')}}">View Profile</a></td>
                                 <td>{{HomeController::getInfo($commitArray, 'date')}}</td>
                                 <td>
-                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{HomeController::getInfo($commitArray, 'node_id')}}" aria-expanded="true" aria-controls="collapse{{HomeController::getInfo($commitArray, 'node_id')}}">
                                       Details
                                     </button>
                                 </td>
                             </tr>
                     </table>
                 </div>
-                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div id="collapse{{HomeController::getInfo($commitArray, 'node_id')}}" class="collapse" aria-labelledby="heading{{HomeController::getInfo($commitArray, 'node_id')}}" data-parent="#accordion">
                   <div class="card-body">
                         <div>
-                            <strong>Node:</strong> {{HomeController::getInfo($commitArray, 'id')}}
+                            <strong>Node:</strong> {{HomeController::getInfo($commitArray, 'node_id')}}
+                        </div>
+                        <div>
+                            <strong>ID:</strong> {{HomeController::getInfo($commitArray, 'id')}}
                         </div>
                         <div>
                             <h6>Message:</h6>

@@ -35,16 +35,19 @@ class HomeController extends Controller
     public static function getInfo($array, $property)
     {
         switch($property){
-            case 'id': 
+            case 'node_id': 
                 $result = $array['node_id'];
                 break;
-           case 'name': 
+            case 'id': 
+                $result = $array['author']['id'];
+                break;
+            case 'name': 
                 $result = $array['commit']['committer']['name'];
                 break;
-           case 'email':
+            case 'email':
                 $result = $array['commit']['committer']['email'];
                 break;
-           case 'date':
+            case 'date':
                 $result = $array['commit']['committer']['date'];
                 break;
             case 'message':
