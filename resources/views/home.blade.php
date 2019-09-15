@@ -85,6 +85,7 @@
                 </div>
               </div>
               @endforeach
+              {{ $commits->links() }}
             </div>
         </div>
     </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Classes\gitClient;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class HomeController extends Controller
 {
@@ -22,13 +23,22 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
         $gitClientObj = new gitClient();
         $commits = $gitClientObj->execQuery();
         $commits = json_decode($commits,true);
+
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+ 
+        $commitCollection = collect($commits);
+        $perPage = 10;
+        $currentPageCommits = $commitCollection->slice(($currentPage * $perPage) - $perPage, $perPage)->all();
+        $paginatedCommits = new LengthAwarePaginator($currentPageCommits , count($commitCollection), $perPage);
+        $paginatedCommits->setPath($request->url());
+
         return view('home', [
-            'commits' => $commits
+            'commits' => $paginatedCommits
         ]);
     }
 
